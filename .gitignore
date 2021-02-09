@@ -1,2 +1,5 @@
 *.log
 result/
+*.swp
+addressbook.txt
+
