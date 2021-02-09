@@ -14,7 +14,8 @@ if [ "$COMMAND" = "add" ]; then
   . ./add.sh
   addaddress $1
 elif [ "$COMMAND" = "search" ]; then
-  echo "search user"
+  . ./search.sh
+  searchuser $1
 elif [ "$COMMAND" = "update" ]; then
   echo "update user"
 elif [ "$COMMAND" = "delete" ]; then
@@ -24,3 +25,4 @@ else
   echo "something wrong"
   usage
 fi
+
