@@ -1,15 +1,11 @@
+. ./common.sh
+
 updatename()
 {
   NAME=$1
-  [ -z "$NAME" ] && \
-	echo "Missing update target" && \
-    return 1
+  validateName $NAME 
+  grepAddress $NAME
   
-  RESULT=`grep "^${NAME}:" $BOOK_FILE`
-  [ -z "$RESULT" ] && \
-	echo "Not existing person : $NAME" && return 2
-  
-  . ./search.sh
   readinfo $RESULT
 
   echo -n "Please enter your name[$NAME] : "
