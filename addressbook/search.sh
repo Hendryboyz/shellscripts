@@ -1,4 +1,4 @@
-searchuser()
+searchname()
 {
   NAME=$1
   [ -z "$NAME" ] && \
@@ -9,17 +9,24 @@ searchuser()
   
   if [ -z "$RESULT" ]; then
     echo "Not existing person : $NAME"
+    return 2
   fi
 
-  OLD_IFS=$IFS
-  IFS=:
-  read NAME SURNAME MAIL PHONE ADDRESS <<< "$RESULT"
-  
-  IFS=$OLD_IFS
+  readinfo $RESULT
+
   echo "${NAME} ${SURNAME}"
   echo "------------------------------" 
   echo "MAIL    : ${MAIL}"
   echo "PHONE   : ${PHONE}"
   echo "ADDRESS : ${ADDRESS}"
 }
+
+readinfo()
+{
+  OLD_IFS=$IFS
+  IFS=:
+  read NAME SURNAME MAIL PHONE ADDRESS <<< "$1"
+  IFS=$OLD_IFS
+}
+
 

@@ -15,9 +15,10 @@ if [ "$COMMAND" = "add" ]; then
   addaddress $1
 elif [ "$COMMAND" = "search" ]; then
   . ./search.sh
-  searchuser $1
+  searchname $1
 elif [ "$COMMAND" = "update" ]; then
-  echo "update user"
+  . ./update.sh
+  updatename $1
 elif [ "$COMMAND" = "delete" ]; then
   . ./delete.sh
   deleteaddress $1
